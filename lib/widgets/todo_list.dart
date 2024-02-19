@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/models/Todo.dart';
 import 'package:todo/widgets/todo_check.dart';
 import 'package:todo/widgets/todo_remove.dart';
+import 'package:todo/widgets/todo_title.dart';
 
 class TodoList extends StatefulWidget {
   final List<Todo> todos;
@@ -37,11 +38,7 @@ class _TodoListState extends State<TodoList> {
                         update: (completed) =>
                             updateCompleted(index, completed)),
                     const SizedBox(width: 8),
-                    Text(widget.todos[index].title,
-                        style: widget.todos[index].completed
-                            ? const TextStyle(
-                                decoration: TextDecoration.lineThrough)
-                            : null)
+                    TodoTitle(title: widget.todos[index].title, completed: widget.todos[index].completed)
                   ],
                 ),
                 trailing: TodoRemove(index: index, remove: widget.remove),
